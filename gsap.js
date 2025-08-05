@@ -80,15 +80,68 @@ document.addEventListener("DOMContentLoaded", () => {
 	const video = document.getElementById("video");
 
 	// Обработчик загрузки метаданных видео (получаем duration)
+
+	// video.onloadedmetadata = () => {
+	// 	const duration = video.duration;
+
+	// 	const tl = gsap
+	// 		.timeline({
+	// 			scrollTrigger: {
+	// 				trigger: "video",
+	// 				start: startValue, // или заменить на ваше значение
+	// 				end: endValue, // или заменить на ваше значение
+	// 				scrub: 0.7,
+	// 				pin: true,
+	// 			},
+	// 		})
+	// 		.fromTo(
+	// 			video,
+	// 			{
+	// 				currentTime: 0,
+	// 				scale: IsMobile ? 2 : 1.7,
+	// 				opacity: IsMobile ? 1 : 0.5,
+	// 			},
+	// 			{
+	// 				currentTime: 10,
+	// 				scale: IsMobile ? 1.8 : IsLaptope ? 1.13 : 1,
+	// 				opacity: IsMobile ? 0.5 : 1,
+	// 				ease: "none",
+	// 			}
+	// 		);
+
+	// 	// Привязка currentTime к прогрессу scroll
+	// 	tl.to(video, {
+	// 		currentTime: duration,
+	// 		ease: "none",
+	// 	});
+	// };
 	video.onloadedmetadata = () => {
+		// Обязательно установим 0.01 секунды (иначе может остаться "пустым")
+		video.currentTime = 0.01;
+
+		// Попытка "разморозить" видео (нужно для Safari/Chrome mobile)
+		video
+			.play()
+			.then(() => {
+				video.pause();
+				video.currentTime = 0;
+
+				initScrollAnimation(); // запускаем scroll-анимацию
+			})
+			.catch((err) => {
+				console.warn("Не удалось запустить видео (это ок)", err);
+				initScrollAnimation(); // всё равно запускаем анимацию
+			});
+	};
+	function initScrollAnimation() {
 		const duration = video.duration;
 
 		const tl = gsap
 			.timeline({
 				scrollTrigger: {
 					trigger: "video",
-					start: startValue, // или заменить на ваше значение
-					end: endValue, // или заменить на ваше значение
+					start: startValue,
+					end: endValue,
 					scrub: 0.7,
 					pin: true,
 				},
@@ -97,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				video,
 				{
 					currentTime: 0,
-					scale: IsMobile ? 2 : 1.7,
+					scale: IsMobile ? 1.8 : 1.5,
 					opacity: IsMobile ? 1 : 0.5,
 				},
 				{
@@ -106,14 +159,12 @@ document.addEventListener("DOMContentLoaded", () => {
 					opacity: IsMobile ? 0.5 : 1,
 					ease: "none",
 				}
-			);
-
-		// Привязка currentTime к прогрессу scroll
-		tl.to(video, {
-			currentTime: duration,
-			ease: "none",
-		});
-	};
+			)
+			.to(video, {
+				currentTime: duration,
+				ease: "none",
+			});
+	}
 	gsap
 		.timeline({
 			scrollTrigger: {

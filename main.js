@@ -1,5 +1,15 @@
 import { animatedSlide } from "./gsap.js";
 
+window.addEventListener("load", () => {
+	const preloader = document.getElementById("preloader");
+	const headerContent = document.getElementById("header__content");
+	const mainContent = document.getElementById("main__content");
+
+	preloader.style.display = "none";
+	headerContent.style.display = "block";
+	mainContent.style.display = "block";
+});
+
 document.addEventListener("DOMContentLoaded", () => {
 	const sliderLists = [
 		{

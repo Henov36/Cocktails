@@ -5,10 +5,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./style.css" />
 		<script type="module" defer src="./main.js"></script>
+		<script defer src="./gsap.js"></script>
 		<title>Document</title>
 	</head>
 	<body>
-		<header>
+		<div id="preloader">
+			<p>LOADING>>>>>>>>>>>></p>
+		</div>
+
+		<header id="header__content">
 			<div class="header__container">
 				<a href="#home">
 					<img src="./img/globalLogo.svg" alt="Logo" />
@@ -23,7 +28,7 @@
 				</nav>
 			</div>
 		</header>
-		<main>
+		<main id="main__content">
 			<section id="home">
 				<div class="home__container">
 					<div class="noicy2"></div>
@@ -264,6 +269,5 @@
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-		<script src="./gsap.js"></script>
 	</body>
 </html>
