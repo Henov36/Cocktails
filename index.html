@@ -4,8 +4,14 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./style.css" />
+
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
 		<script type="module" defer src="./main.js"></script>
-		<script defer src="./gsap.js"></script>
+		<script type="module" defer src="./gsap.js"></script>
+
 		<title>Document</title>
 	</head>
 	<body>
@@ -19,7 +25,7 @@
 					<img src="./img/globalLogo.svg" alt="Logo" />
 				</a>
 				<nav>
-					<ul class="flex">
+					<ul>
 						<li>Home</li>
 						<li>Coctails</li>
 						<li>About us</li>
@@ -58,10 +64,10 @@
 			<div class="video">
 				<video
 					id="video"
-					src="./video/output.mp4"
 					muted
 					playsinline
-					preload="auto"></video>
+					preload="auto"
+					src="./video/output.mp4"></video>
 			</div>
 			<section id="cocktails">
 				<div class="cocktail__contant">
@@ -262,12 +268,5 @@
 			</section>
 			<section></section>
 		</main>
-
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathHelper.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 	</body>
 </html>
