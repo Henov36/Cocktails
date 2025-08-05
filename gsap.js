@@ -78,10 +78,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	video.onloadedmetadata = () => {
 		const duration = video.duration || 10;
 		video.currentTime = 0.01;
-		// video.play().then(() => {
-		// 	video.pause();
-		// 	video.currentTime = 0;
-		// });
+		if (IsMobile) {
+			video.play().then(() => {
+				video.pause();
+				video.currentTime = 0;
+			});
+		}
+
 		const tl = gsap
 			.timeline({
 				scrollTrigger: {
