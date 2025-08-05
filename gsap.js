@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		// Привязка currentTime к прогрессу scroll
 		tl.to(video, {
 			currentTime: duration,
-			// ease: "none",
+			ease: "none",
 		});
 	};
 	gsap
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		})
 		.fromTo(
 			"#slider",
-			{ opacity: 0, yPercent: -100 },
+			{ opacity: 0, yPercent: -30 },
 			{ opacity: 1, yPercent: 0, duration: 1 }
 		);
 });
