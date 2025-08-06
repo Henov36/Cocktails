@@ -236,7 +236,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				trigger: "#slider",
 				start: IsMobile ? "top 80%" : "top top",
 				end: "bottom center",
-				markers: true,
 			},
 		})
 		.fromTo(
