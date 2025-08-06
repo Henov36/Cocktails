@@ -1,5 +1,5 @@
 const IsMobile = window.innerWidth < 769 ? true : false;
-const IsSmallMobile = window.innerHeight < 400 ? true : false;
+const IsSmallMobile = window.innerWidth < 400 ? true : false;
 const IsLaptope = window.innerWidth <= 1441 ? true : false;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -234,14 +234,15 @@ document.addEventListener("DOMContentLoaded", () => {
 		.timeline({
 			scrollTrigger: {
 				trigger: "#slider",
-				start: IsMobile ? "bottom 80%" : "top top",
+				start: IsMobile ? "top 80%" : "top top",
 				end: "bottom center",
+				markers: true,
 			},
 		})
 		.fromTo(
 			"#slider",
-			{ opacity: 0, yPercent: -30 },
-			{ opacity: 1, yPercent: 0, duration: 1 }
+			{ opacity: 0, yPercent: -40 },
+			{ opacity: 1, yPercent: 0, duration: 1.5 }
 		);
 });
 

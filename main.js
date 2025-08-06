@@ -70,7 +70,7 @@ function renderSlide(id, direction = "right") {
 	cocktailItem.innerHTML = `
 		<div class="slide-content">
 			<div class="img-block">
-				<img class="animated-image" src="${item.image}" alt="${item.name}" />
+				<img class="animated-image c${item.id}" src="${item.image}" alt="${item.name}" />
 				<span class="cocktail-arrows left-arrow left-span">
 				<p class="left-text">${prevItem.name}</p>
 				
