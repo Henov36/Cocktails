@@ -717,9 +717,12 @@ video {
 	position: relative;
 	height: 100vh;
 	overflow: hidden;
-	padding: 100px 0px;
+	padding: 150px 0px;
 	z-index: 3;
 	backdrop-filter: brightness(0.1) blur(10px);
+}
+#slider h5 {
+	text-align: start;
 }
 
 .slide__nav {
@@ -1226,6 +1229,10 @@ footer {
 		padding: 100px 0px;
 	}
 
+	#slider h5 {
+		font-size: 24px;
+	}
+
 	.cocktail-arrows {
 		width: 30%;
 		font-size: 24px;
@@ -1306,4 +1313,3 @@ footer {
 		font-size: 80px;
 	}
 }
-

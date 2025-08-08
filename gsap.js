@@ -297,9 +297,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		".contacts-content",
 		{
 			opacity: 0.1,
-			yPercent: -100,
-			scale: 30,
-			// rotateX: 70,
+			yPercent: -150,
+			scale: 0.01,
+			rotateX: 70,
 			filter: "brightness(0) blur(10px)",
 		},
 		{
@@ -307,12 +307,12 @@ document.addEventListener("DOMContentLoaded", () => {
 			yPercent: 0,
 			scale: 1,
 			filter: "brightness(1) blur(0px)",
-			// rotateX:30,
+			rotateX: 0,
 			scrollTrigger: {
 				trigger: "#footer",
-				start: "top 70%",
+				start: "top 10%",
 				end: "bottom bottom",
-				scrub: true,
+				scrub: 5,
 			},
 		}
 	);
