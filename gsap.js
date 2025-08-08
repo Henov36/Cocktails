@@ -73,8 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	const video = document.getElementById("video");
 
-	// Обработчик загрузки метаданных видео (получаем duration)
-
 	video.onloadedmetadata = () => {
 		const duration = video.duration || 10;
 		video.currentTime = 0.01;
@@ -89,11 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			.timeline({
 				scrollTrigger: {
 					trigger: "video",
-					start: startValue, // или заменить на ваше значение
-					end: endValue, // или заменить на ваше значение
+					start: startValue,
+					end: endValue,
 					scrub: 0.7,
 					pin: true,
-					markers: true,
 				},
 			})
 			.fromTo(
