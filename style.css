@@ -876,12 +876,6 @@ video {
 	right: 0px;
 }
 
-#contacts {
-	position: relative;
-	z-index: 3;
-	max-height: 200vh;
-}
-
 @media (max-width: 1921px) {
 	h1 {
 		font-size: 330px;
@@ -910,6 +904,68 @@ video {
 	#masked-content {
 		bottom: 50px;
 	}
+}
+
+.ggg {
+	height: 200vh;
+	overflow: hidden;
+}
+footer {
+	position: relative;
+	z-index: 4;
+	height: fit-content;
+	background-color: #000000;
+}
+
+#contacts {
+	padding: 100px 0px;
+	font-family: "Gilroy Light", sans-serif;
+	height: 100vh;
+	overflow: hidden;
+	position: relative;
+	z-index: 5;
+	max-height: 200vh;
+	/* perspective: 800px; */
+}
+
+#contacts h4 {
+	font-size: 100px;
+	font-family: "Mojito Bolt", sans-serif;
+}
+#contacts h4 span {
+	font-size: 100px;
+	font-family: "Mojito Outline", sans-serif;
+	color: white;
+}
+
+#contacts h5 {
+	margin-top: 50px;
+}
+
+.contacts-content {
+	transform-style: preserve-3d;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+	/* filter: brightness(1) blur(50px); */
+}
+.contacts-content p {
+	text-align: center;
+	width: 100%;
+}
+
+.contacts-content div {
+	font-size: 26px;
+}
+
+.social {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* margin-top: 200px; */
 }
 
 @media (max-width: 1440px) {
@@ -962,7 +1018,11 @@ video {
 	}
 	#art h2 {
 		font-size: 250px;
-		padding: 30px 0px;
+		padding: 60px 0px;
+	}
+
+	#art ul {
+		padding-top: 70vh;
 	}
 
 	#masked-content {
@@ -972,17 +1032,17 @@ video {
 		font-size: 38px;
 	}
 	.cocktail-img {
-		width: 700px !important;
-		left: calc(50% - 350px);
-		top: 0%;
+		width: 900px !important;
+		left: calc(50% - 450px);
+		top: 20%;
 		overflow: hidden;
 	}
 
 	.masked__container h3 {
-		bottom: 40%;
+		bottom: 10%;
 	}
 	.cocktail-img img {
-		height: 75% !important;
+		/* height: 75% !important; */
 	}
 	.slide__nav :nth-child(3) {
 		margin: 20px auto 0 auto;
@@ -1073,7 +1133,7 @@ video {
 		position: static;
 	}
 	#masked-content {
-		bottom: 30%;
+		bottom: 15%;
 	}
 	#masked-content h5 {
 		font-size: 24px;
@@ -1081,9 +1141,13 @@ video {
 	#masked-content p {
 		font-size: 20px;
 	}
+
+	.masked__container h3 {
+		bottom: 15%;
+	}
 	#art h2 {
 		font-size: 100px;
-		padding-top: 50px;
+		padding-top: 100px;
 	}
 	.cocktails__container {
 		padding: 50px 20px 0px 20px;
@@ -1092,7 +1156,7 @@ video {
 	}
 
 	.masked-img {
-		mask-position: 50% 80%;
+		mask-position: 50% 55%;
 	}
 	.masked__container h3 {
 		width: 100%;
@@ -1102,6 +1166,14 @@ video {
 	}
 	.coctails__list {
 		padding-top: 0;
+	}
+
+	.cocktail-img {
+		top: 10%;
+	}
+
+	.cocktail-img img {
+		height: 100% !important;
 	}
 
 	.coctails__list li {
@@ -1193,6 +1265,16 @@ video {
 		/* top: auto; */
 		/* bottom: 0; */
 	}
+	#contacts {
+		padding: 150px 0px;
+	}
+
+	#contacts h4 {
+		font-size: 50px !important;
+	}
+	#contacts h4 span {
+		font-size: 50px !important;
+	}
 }
 
 @media (max-width: 400px) {
@@ -1202,69 +1284,26 @@ video {
 	h5 {
 		font-size: 28px;
 	}
+
 	.leaf img {
 		height: 200px;
 	}
 	.img-block .animated-image {
 		width: 50%;
 	}
-}
-.ggg {
-	height: 200vh;
-	overflow: hidden;
-}
-footer {
-	position: relative;
-	z-index: 4;
-	height: fit-content;
-	background-color: #000000;
+	.video {
+		top: 40px !important;
+	}
+	#home h1 {
+		font-size: 80px;
+		padding-top: 170px;
+	}
+	.home__container p {
+		font-size: 16px;
+	}
+
+	#art h2 {
+		font-size: 80px;
+	}
 }
 
-#contacts {
-	padding: 100px 0px;
-	font-family: "Gilroy Light", sans-serif;
-	height: 100vh;
-	overflow: hidden;
-	position: relative;
-	z-index: 1;
-	perspective: 800px;
-}
-
-#contacts h4 {
-	font-size: 100px;
-	font-family: "Mojito Bolt", sans-serif;
-}
-#contacts h4 span {
-	font-size: 100px;
-	font-family: "Mojito Outline", sans-serif;
-	color: white;
-}
-
-#contacts h5 {
-	margin-top: 50px;
-}
-
-.contacts-content {
-	transform-style: preserve-3d;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	height: 100%;
-}
-.contacts-content p {
-	text-align: center;
-	width: 100%;
-}
-
-.contacts-content div {
-	font-size: 26px;
-}
-
-.social {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	/* margin-top: 200px; */
-}

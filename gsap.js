@@ -37,8 +37,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	if (!IsMobile) {
-		gsap.to(".left-leaf", { x: -170, y: -300 }, 0.3);
-		gsap.to(".right-leaf", { x: 170, y: -150 }, 0.3);
+		gsap.to(
+			".left-leaf",
+			{ x: IsSmallMobile ? -130 : -170, y: IsSmallMobile ? -120 : -300 },
+			0.3
+		);
+		gsap.to(
+			".right-leaf",
+			{ x: IsSmallMobile ? 120 : 170, y: IsSmallMobile ? 50 : -150 },
+			0.3
+		);
 
 		gsap
 			.timeline({
@@ -49,8 +57,20 @@ document.addEventListener("DOMContentLoaded", () => {
 					scrub: true,
 				},
 			})
-			.to(".left-leaf", { y: 150, rotation: 130, x: -300 }, 0)
-			.to(".right-leaf", { y: -300, rotation: -140, x: 300 }, 0);
+			.to(
+				".left-leaf",
+				{ y: 150, rotation: 130, x: IsSmallMobile ? -130 : -300 },
+				0
+			)
+			.to(
+				".right-leaf",
+				{
+					y: IsSmallMobile ? -100 : -300,
+					rotation: -140,
+					x: IsSmallMobile ? 100 : 300,
+				},
+				0
+			);
 	} else {
 		gsap.to(".left-leaf", { x: -120, y: -120 }, 0.3);
 		gsap.to(".right-leaf", { x: 120, y: -50 }, 0.3);
@@ -125,10 +145,21 @@ document.addEventListener("DOMContentLoaded", () => {
 		})
 		.to(
 			".cocktail__leaf-left",
-			{ y: 0, x: IsSmallMobile ? -200 : -100, rotation: 27 },
+			{
+				y: IsSmallMobile ? -50 : 0,
+				x: IsSmallMobile ? -120 : -100,
+				rotation: 27,
+			},
 			0
 		)
-		.to(".cocktail__right-left", { y: IsSmallMobile ? 150 : 50, x: 100 }, 0);
+		.to(
+			".cocktail__right-left",
+			{
+				y: IsSmallMobile ? 50 : 50,
+				x: IsSmallMobile ? 100 : 100,
+			},
+			0
+		);
 
 	const aboutUsTitle = new SplitText("#aboutUs h2", {
 		type: "words",
@@ -263,21 +294,23 @@ document.addEventListener("DOMContentLoaded", () => {
 	timelineSlide.to("#slider", { yPercent: -100 });
 
 	gsap.fromTo(
-		"#contacts",
+		".contacts-content",
 		{
-			opacity: 0,
+			opacity: 0.1,
 			yPercent: -100,
-			scale: 0.05,
-			rotateX: 70,
+			scale: 30,
+			// rotateX: 70,
+			filter: "brightness(0) blur(10px)",
 		},
 		{
 			opacity: 1,
 			yPercent: 0,
 			scale: 1,
-			rotateX: 0,
+			filter: "brightness(1) blur(0px)",
+			// rotateX:30,
 			scrollTrigger: {
 				trigger: "#footer",
-				start: "top 90%",
+				start: "top 70%",
 				end: "bottom bottom",
 				scrub: true,
 			},
