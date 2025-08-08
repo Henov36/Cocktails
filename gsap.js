@@ -1,6 +1,6 @@
-const IsMobile = window.innerWidth < 769 ? true : false;
-const IsSmallMobile = window.innerWidth < 400 ? true : false;
-const IsLaptope = window.innerWidth <= 1441 ? true : false;
+const IsSmallMobile = window.innerWidth < 400;
+const IsMobile = window.innerWidth < 769 && !IsSmallMobile;
+const IsLaptope = window.innerWidth < 1441 && !IsMobile && !IsSmallMobile;
 
 document.addEventListener("DOMContentLoaded", () => {
 	gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -93,18 +93,19 @@ document.addEventListener("DOMContentLoaded", () => {
 					end: endValue, // или заменить на ваше значение
 					scrub: 0.7,
 					pin: true,
+					markers: true,
 				},
 			})
 			.fromTo(
 				video,
 				{
 					currentTime: 0,
-					scale: IsMobile ? 2 : 1.7,
+					scale: IsMobile ? 2 : IsLaptope ? 1 : 1.8,
 					opacity: IsMobile ? 1 : 0.5,
 				},
 				{
 					currentTime: 10,
-					scale: IsMobile ? 1.8 : IsLaptope ? 1.13 : 1,
+					scale: IsMobile ? 1.8 : IsLaptope ? 1 : 1,
 					opacity: IsMobile ? 0.5 : 1,
 					ease: "none",
 				}
@@ -207,7 +208,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			start: IsMobile ? "top 20%" : "top top",
 			end: "bottom center",
 			scrub: 1.5,
-			pin: true,
+			pinSpacing: false,
+			// pin: true,
 		},
 	});
 
@@ -230,19 +232,69 @@ document.addEventListener("DOMContentLoaded", () => {
 			stagger: 0.2,
 		});
 
-	gsap
-		.timeline({
+	// gsap.fromTo(
+	// 	"#slider",
+	// 	{
+	// 		yPercent: 0,
+	// 	}, // снизу
+	// 	{
+	// 		yPercent: -100,
+	// 		ease: "none",
+
+	// 		scrollTrigger: {
+	// 			trigger: "#art",
+	// 			start: "top top",
+	// 			end: "+=100%",
+	// 			scrub: 1.2,
+	// 			pin: true,
+	// 			// pinSpacing: false,
+	// 			markers: true,
+	// 		},
+	// 	}
+	// );
+	const timelineSlide = gsap.timeline({
+		scrollTrigger: {
+			trigger: "#art",
+			pin: true,
+			start: "top top",
+			end: "+=100%",
+			scrub: 1,
+			invalidateOnRefresh: true,
+		},
+		defaults: { ease: "none" },
+	});
+	timelineSlide.to("#slider", { yPercent: -100 });
+
+	gsap.fromTo(
+		"#contacts",
+		{
+			opacity: 0,
+			yPercent: -100,
+			scale: 0.05,
+			rotateX: 70,
+		},
+		{
+			opacity: 1,
+			yPercent: 0,
+			scale: 1,
+			rotateX: 0,
 			scrollTrigger: {
-				trigger: "#slider",
-				start: IsMobile ? "top 80%" : "top top",
-				end: "bottom center",
+				trigger: "#footer",
+				start: "top 90%",
+				end: "bottom bottom",
+				scrub: true,
 			},
-		})
-		.fromTo(
-			"#slider",
-			{ opacity: 0, yPercent: -40 },
-			{ opacity: 1, yPercent: 0, duration: 1.5 }
-		);
+		}
+	);
+	gsap.to("#slider", {
+		backdropFilter: "brightness(0) blur(50px)",
+		scrollTrigger: {
+			trigger: "#footer", // или "#contacts", если удобнее
+			start: "top 90%",
+			end: "top 30%", // когда полностью скроется
+			scrub: true,
+		},
+	});
 });
 
 export function animatedSlide(index, direction) {

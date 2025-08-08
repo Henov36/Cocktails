@@ -54,6 +54,8 @@ a {
 section {
 	min-height: 100vh;
 	font-size: 3em;
+	position: relative;
+	width: 100%;
 	/* padding: 100px 0px; */
 }
 .pin-spacer {
@@ -73,10 +75,10 @@ h2 {
 h3 {
 	font-size: 36px;
 }
-
-h4 {
+h5 {
+	font-size: 36px;
+	text-align: center;
 }
-
 .gradient-text {
 	background: linear-gradient(
 		180deg,
@@ -172,14 +174,6 @@ header {
 	align-items: center;
 }
 
-.header__container a {
-	/* padding-top: 20px; */
-
-	/* display: block; */
-	/* width: 100%; */
-	/* text-align: center; */
-}
-
 .header__container img {
 	height: 26px;
 }
@@ -194,11 +188,6 @@ header ul {
 
 header ul li:not(:last-child) {
 	margin-right: 100px;
-}
-
-main {
-	/* padding-top: 100px; */
-	/* overflow: hidden; */
 }
 
 h4 {
@@ -347,10 +336,6 @@ video {
 
 .coctails__list {
 	padding-top: 100px;
-}
-
-.cocktail__contant {
-	/* position: relative; */
 }
 
 .coctails__list li {
@@ -624,9 +609,9 @@ video {
 }
 
 #art {
-	height: 100vh;
 	position: relative;
 	overflow: hidden;
+	z-index: 2;
 }
 
 #art h2 {
@@ -727,13 +712,14 @@ video {
 	left: calc(50% - 156px);
 	width: 312px;
 }
-.will-fade {
-}
 
 #slider {
 	position: relative;
+	height: 100vh;
 	overflow: hidden;
 	padding: 100px 0px;
+	z-index: 3;
+	backdrop-filter: brightness(0.1) blur(10px);
 }
 
 .slide__nav {
@@ -745,9 +731,6 @@ video {
 	position: relative;
 }
 
-h5 {
-	font-size: 36px;
-}
 .slide__nav-buttons {
 	background: transparent;
 	color: white;
@@ -757,11 +740,6 @@ h5 {
 	/* width: 24%;*/
 	font-family: "Mojito Bolt", sans-serif;
 	cursor: pointer;
-}
-
-.slide__nav-buttons :hover {
-	/* transform: scale(1.2);
-	font-family: 'Mojito Outline'; */
 }
 
 .active-button {
@@ -806,7 +784,7 @@ h5 {
 }
 .c3 {
 	background-image: url(./img/coctailSlide/raibow.png);
-	
+
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -857,8 +835,6 @@ h5 {
 
 	display: inline-block;
 }
-.slide-content {
-}
 
 .cocktail-arrows {
 	display: flex;
@@ -892,16 +868,18 @@ h5 {
 	/* height: 150px; */
 }
 
-.cocktail-arrow-right {
-	/* height: 150px; */
-}
-
 .left-arrow {
 	left: 0px;
 }
 
 .right-arrow {
 	right: 0px;
+}
+
+#contacts {
+	position: relative;
+	z-index: 3;
+	max-height: 200vh;
 }
 
 @media (max-width: 1921px) {
@@ -1173,7 +1151,7 @@ h5 {
 		display: none;
 	}
 	#slider {
-		padding: 0px;
+		padding: 100px 0px;
 	}
 
 	.cocktail-arrows {
@@ -1230,4 +1208,63 @@ h5 {
 	.img-block .animated-image {
 		width: 50%;
 	}
+}
+.ggg {
+	height: 200vh;
+	overflow: hidden;
+}
+footer {
+	position: relative;
+	z-index: 4;
+	height: fit-content;
+	background-color: #000000;
+}
+
+#contacts {
+	padding: 100px 0px;
+	font-family: "Gilroy Light", sans-serif;
+	height: 100vh;
+	overflow: hidden;
+	position: relative;
+	z-index: 1;
+	perspective: 800px;
+}
+
+#contacts h4 {
+	font-size: 100px;
+	font-family: "Mojito Bolt", sans-serif;
+}
+#contacts h4 span {
+	font-size: 100px;
+	font-family: "Mojito Outline", sans-serif;
+	color: white;
+}
+
+#contacts h5 {
+	margin-top: 50px;
+}
+
+.contacts-content {
+	transform-style: preserve-3d;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+}
+.contacts-content p {
+	text-align: center;
+	width: 100%;
+}
+
+.contacts-content div {
+	font-size: 26px;
+}
+
+.social {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* margin-top: 200px; */
 }
