@@ -34,51 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		ease: "back.out(1.7)",
 	});
 
-	const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-	const header = document.getElementById("header__content");
-
-	document.querySelectorAll('a[href^="#"]').forEach((link) => {
-		link.addEventListener("click", (e) => {
-			const hash = link.getAttribute("href");
-			if (!hash || hash === "#") return;
-			const target = document.querySelector(hash);
-			if (!target) return;
-
-			e.preventDefault();
-
-			const isCocktails = hash === "#cocktails";
-			const scrollSpeed = isCocktails ? 2.5 : 1.0;
-
-			gsap.to(window, {
-				duration: scrollSpeed,
-				ease: "power2.out",
-				scrollTo: {
-					y: target,
-					offsetY: header ? header.offsetHeight : 0,
-					autoKill: true,
-				},
-			});
-
-			history.pushState(null, "", hash);
-		});
-	});
-
-	const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
-	const setActive = (id) => {
-		navLinks.forEach((a) =>
-			a.classList.toggle("is-active", a.getAttribute("href") === `#${id}`)
-		);
-	};
-	document.querySelectorAll("section[id]").forEach((sec) => {
-		ScrollTrigger.create({
-			trigger: sec,
-			start: "top center",
-			end: "bottom center",
-			onEnter: () => setActive(sec.id),
-			onEnterBack: () => setActive(sec.id),
-		});
-	});
-
 	if (!IsMobile) {
 		gsap.to(
 			".left-leaf",

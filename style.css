@@ -37,7 +37,10 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-/* html{scroll-behavior: smooth;} */
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 70px;
+}
 body,
 html {
 	overflow-x: hidden;
@@ -1081,6 +1084,9 @@ footer {
 	}
 }
 @media (max-width: 767px) {
+	html {
+		scroll-padding-top: 120px;
+	}
 	.header__container {
 		padding: 20px;
 		flex-direction: column;
