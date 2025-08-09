@@ -3,9 +3,7 @@ const IsMobile = window.innerWidth < 769 && !IsSmallMobile;
 const IsLaptope = window.innerWidth < 1441 && !IsMobile && !IsSmallMobile;
 
 document.addEventListener("DOMContentLoaded", () => {
-	gsap.registerPlugin(ScrollTrigger, SplitText);
-
-	// gsap.defaults({ ease: "none", duration: 2 	});
+	gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin);
 
 	const mainSplit = new SplitText(".title", { type: "chars" });
 	const parSplit = new SplitText(".par-title", { type: "lines" });
@@ -34,6 +32,54 @@ document.addEventListener("DOMContentLoaded", () => {
 		duration: 1,
 		delay: 1,
 		ease: "back.out(1.7)",
+	});
+
+	const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+	const header = document.getElementById("header__content");
+
+	// плавный скролл по клику
+	document.querySelectorAll('a[href^="#"]').forEach((link) => {
+		link.addEventListener("click", (e) => {
+			const hash = link.getAttribute("href");
+			if (!hash || hash === "#") return;
+			const target = document.querySelector(hash);
+			if (!target) return;
+
+			e.preventDefault();
+
+			const isCocktails = hash === "#cocktails"; // проверка
+			const scrollSpeed = isCocktails ? 2.5 : 1.0; // медленнее на коктейли
+
+			gsap.to(window, {
+				duration: scrollSpeed,
+				ease: "power2.out",
+				scrollTo: {
+					y: target,
+					// отступ под фикс-хедер (если хедер sticky/fixed)
+					offsetY: header ? header.offsetHeight : 0,
+					autoKill: true,
+				},
+			});
+
+			history.pushState(null, "", hash);
+		});
+	});
+
+	// (опционально) подсветка активного пункта
+	const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
+	const setActive = (id) => {
+		navLinks.forEach((a) =>
+			a.classList.toggle("is-active", a.getAttribute("href") === `#${id}`)
+		);
+	};
+	document.querySelectorAll("section[id]").forEach((sec) => {
+		ScrollTrigger.create({
+			trigger: sec,
+			start: "top center",
+			end: "bottom center",
+			onEnter: () => setActive(sec.id),
+			onEnterBack: () => setActive(sec.id),
+		});
 	});
 
 	if (!IsMobile) {
@@ -127,8 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
 					ease: "none",
 				}
 			);
-
-		// Привязка currentTime к прогрессу scroll
 		tl.to(video, {
 			currentTime: duration,
 			ease: "none",
@@ -259,27 +303,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			duration: 1,
 			stagger: 0.2,
 		});
-
-	// gsap.fromTo(
-	// 	"#slider",
-	// 	{
-	// 		yPercent: 0,
-	// 	}, // снизу
-	// 	{
-	// 		yPercent: -100,
-	// 		ease: "none",
-
-	// 		scrollTrigger: {
-	// 			trigger: "#art",
-	// 			start: "top top",
-	// 			end: "+=100%",
-	// 			scrub: 1.2,
-	// 			pin: true,
-	// 			// pinSpacing: false,
-	// 			markers: true,
-	// 		},
-	// 	}
-	// );
 	const timelineSlide = gsap.timeline({
 		scrollTrigger: {
 			trigger: "#art",
@@ -319,9 +342,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	gsap.to("#slider", {
 		backdropFilter: "brightness(0) blur(50px)",
 		scrollTrigger: {
-			trigger: "#footer", // или "#contacts", если удобнее
+			trigger: "#footer",
 			start: "top 90%",
-			end: "top 30%", // когда полностью скроется
+			end: "top 30%",
 			scrub: true,
 		},
 	});

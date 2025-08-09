@@ -190,6 +190,10 @@ header ul li:not(:last-child) {
 	margin-right: 100px;
 }
 
+header ul li a {
+	color: white;
+}
+
 h4 {
 	color: #e7d393;
 }
@@ -1135,6 +1139,12 @@ footer {
 		bottom: 60%;
 		position: static;
 	}
+
+	.coctails__list span {
+		margin-top: 0px;
+		display: flex;
+		justify-content: center;
+	}
 	#masked-content {
 		bottom: 15%;
 	}
@@ -1251,7 +1261,12 @@ footer {
 
 	.slide__nav-buttons {
 		padding: 10px;
-		width: 45%;
+		width: 48%;
+		height: 46px;
+	}
+
+	#slider .slide__nav-buttons h5 {
+		text-align: center;
 	}
 
 	.slide-des {
@@ -1288,6 +1303,14 @@ footer {
 	h1 {
 		font-size: 90px;
 	}
+
+	h3{
+		font-size: 32px;
+	}
+
+	h4 {
+		font-size: 26px;
+	}
 	h5 {
 		font-size: 28px;
 	}
@@ -1298,9 +1321,7 @@ footer {
 	.img-block .animated-image {
 		width: 50%;
 	}
-	.video {
-		top: 40px !important;
-	}
+
 	#home h1 {
 		font-size: 80px;
 		padding-top: 170px;
@@ -1309,7 +1330,51 @@ footer {
 		font-size: 16px;
 	}
 
+	.coctails__list span {
+		font-size: 18px;
+	}
+
+	#aboutUs h2 {
+		font-size: 32px;
+	}
+
+	#aboutUs h5 {
+		text-align: start;
+		font-size: 22px;
+	}
+
+	.title__span {
+		font-size: 22px;
+	}
+
+	.aboutUs__left-side {
+		width: 100%;
+	}
+
+	.aboutUs__right-side p {
+		font-size: 16px;
+	}
+
 	#art h2 {
 		font-size: 80px;
+	}
+
+	#slider .slide__nav-buttons h5 {
+		font-size: 18px;
+	}
+	#slider h2 {
+		font-size: 30px;
+	}
+
+	.slide-des p {
+		font-size: 18px;
+	}
+
+	#contacts h5 {
+		margin-top: 20px;
+	}
+
+	.contacts-content div {
+		font-size: 22px;
 	}
 }
