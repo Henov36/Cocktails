@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 	const header = document.getElementById("header__content");
 
-	// плавный скролл по клику
 	document.querySelectorAll('a[href^="#"]').forEach((link) => {
 		link.addEventListener("click", (e) => {
 			const hash = link.getAttribute("href");
@@ -47,15 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			e.preventDefault();
 
-			const isCocktails = hash === "#cocktails"; // проверка
-			const scrollSpeed = isCocktails ? 2.5 : 1.0; // медленнее на коктейли
+			const isCocktails = hash === "#cocktails";
+			const scrollSpeed = isCocktails ? 2.5 : 1.0;
 
 			gsap.to(window, {
 				duration: scrollSpeed,
 				ease: "power2.out",
 				scrollTo: {
 					y: target,
-					// отступ под фикс-хедер (если хедер sticky/fixed)
 					offsetY: header ? header.offsetHeight : 0,
 					autoKill: true,
 				},
@@ -65,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
-	// (опционально) подсветка активного пункта
 	const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
 	const setActive = (id) => {
 		navLinks.forEach((a) =>
@@ -281,7 +278,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			end: "bottom center",
 			scrub: 1.5,
 			pinSpacing: false,
-			// pin: true,
 		},
 	});
 
@@ -340,7 +336,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	);
 	gsap.to("#slider", {
-		backdropFilter: "brightness(0) blur(50px)",
+		"--bg-opacity": 1,
 		scrollTrigger: {
 			trigger: "#footer",
 			start: "top 90%",
