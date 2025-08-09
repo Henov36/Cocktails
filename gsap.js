@@ -1,6 +1,7 @@
 const IsSmallMobile = window.innerWidth < 400;
 const IsMobile = window.innerWidth < 769 && !IsSmallMobile;
 const IsLaptope = window.innerWidth < 1441 && !IsMobile && !IsSmallMobile;
+console.log(IsLaptope, IsMobile, IsSmallMobile);
 
 document.addEventListener("DOMContentLoaded", () => {
 	gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin);

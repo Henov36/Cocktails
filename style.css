@@ -705,7 +705,7 @@ video {
 	height: 100vh;
 	overflow: hidden;
 	padding: 150px 0px;
-	z-index: 5;
+	z-index: 2;
 }
 
 #slider::after {
