@@ -115,12 +115,12 @@ document.addEventListener("DOMContentLoaded", () => {
 				video,
 				{
 					currentTime: 0,
-					scale: IsMobile ? 2 : IsLaptope ? 1 : 1.8,
+					scale: IsSmallMobile ? 1.5 : IsMobile ? 2 : IsLaptope ? 1 : 1.8,
 					opacity: IsMobile ? 1 : 0.5,
 				},
 				{
 					currentTime: 10,
-					scale: IsMobile ? 1.8 : IsLaptope ? 1 : 1,
+					scale: IsSmallMobile ? 1.1 : IsMobile ? 1.8 : IsLaptope ? 1 : 1,
 					opacity: IsMobile ? 0.5 : 1,
 					ease: "none",
 				}
