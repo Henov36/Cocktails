@@ -724,6 +724,16 @@ video {
 	text-align: start;
 }
 
+.slider__left-leaf {
+	transform: rotate(45deg) translateX(-50px);
+	top: 80%;
+}
+.slider__right-leaf {
+	transform: rotate(-150deg) translateX(0px) translateY(50px);
+	right: 0;
+	top: 0%;
+}
+
 .slide__nav {
 	color: white;
 	display: flex;
@@ -731,7 +741,7 @@ video {
 	justify-content: space-between;
 	align-items: center;
 	position: relative;
-	z-index: 3;
+	z-index: 11;
 }
 
 .slide__nav-buttons {
@@ -762,7 +772,7 @@ video {
 .coctail__item {
 	margin-top: 40px;
 	position: relative;
-	z-index: 3;
+	z-index: 11;
 }
 .coctail__item img {
 	width: 30%;
@@ -938,6 +948,16 @@ footer {
 	margin-top: 50px;
 }
 
+.contact__left-leaf {
+	transform: rotate(45deg) translateX(-200px);
+}
+
+.contact__right-leaf {
+	transform: rotate(-45deg);
+	right: 0;
+	top: 50%;
+}
+
 .contacts-content {
 	transform-style: preserve-3d;
 	display: flex;
@@ -945,6 +965,8 @@ footer {
 	align-items: center;
 	justify-content: space-between;
 	height: 100%;
+	position: relative;
+	z-index: 11;
 }
 .contacts-content p {
 	text-align: center;
@@ -1274,7 +1296,7 @@ footer {
 	}
 
 	#contacts h4 {
-		font-size: 50px !important;
+		font-size: 44px !important;
 	}
 	#contacts h4 span {
 		font-size: 50px !important;

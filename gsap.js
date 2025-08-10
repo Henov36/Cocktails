@@ -1,7 +1,6 @@
 const IsSmallMobile = window.innerWidth < 400;
 const IsMobile = window.innerWidth < 769 && !IsSmallMobile;
 const IsLaptope = window.innerWidth < 1441 && !IsMobile && !IsSmallMobile;
-console.log(IsLaptope, IsMobile, IsSmallMobile);
 
 document.addEventListener("DOMContentLoaded", () => {
 	gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin);
@@ -87,8 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			.to(".right-leaf", { y: -300, rotation: -140, x: 300 }, 0);
 	}
 
-	const startValue = IsMobile ? "top top" : "center 50%";
-	const endValue = IsMobile ? "120% center" : "bottom top";
+	const startValue = IsMobile ? "top top" : "top top";
+	const endValue = IsMobile ? "120% center" : "bottom 10%";
 
 	const video = document.getElementById("video");
 
@@ -291,15 +290,45 @@ document.addEventListener("DOMContentLoaded", () => {
 			},
 		}
 	);
-	gsap.to("#slider", {
-		"--bg-opacity": 1,
-		scrollTrigger: {
-			trigger: "#footer",
-			start: "top 90%",
-			end: "top 30%",
-			scrub: true,
-		},
-	});
+	gsap
+		.timeline({
+			scrollTrigger: {
+				trigger: "#slider",
+				start: "-50% bottom",
+				end: "bottom top",
+				scrub: true,
+			},
+		})
+		.to(
+			".slider__left-leaf",
+			{
+				y: IsSmallMobile ? -300 : -950,
+				rotation: 140,
+				x: IsSmallMobile ? -350 : IsMobile ? -450 : -800,
+			},
+			0
+		)
+		.to(
+			".slider__right-leaf",
+			{ y: IsSmallMobile ? -200 : -400, x: IsSmallMobile ? 200 : 400 },
+			0
+		);
+
+	gsap
+		.timeline({
+			scrollTrigger: {
+				trigger: "#footer",
+				start: "top 90%",
+				end: "bottom bottom",
+				scrub: true,
+			},
+		})
+		.to(
+			".contact__left-leaf",
+			{ y: 200, rotation: 50, x: IsSmallMobile ? -130 : -200 },
+			0
+		)
+		.to(".contact__right-leaf", { y: -100, x: 120 }, 0);
 });
 
 export function animatedSlide(index, direction) {
