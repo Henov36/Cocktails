@@ -3,7 +3,40 @@ const IsMobile = window.innerWidth < 769 && !IsSmallMobile;
 const IsLaptope = window.innerWidth < 1441 && !IsMobile && !IsSmallMobile;
 
 document.addEventListener("DOMContentLoaded", () => {
-	gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin);
+	gsap.registerPlugin(ScrollTrigger, SplitText);
+	const lenis = new Lenis({
+		duration: 1.5,
+		easing: (t) => 1 - Math.pow(1 - t, 3),
+		smoothWheel: true,
+		smoothTouch: true,
+	});
+
+	lenis.on("scroll", () => ScrollTrigger.update());
+
+	function raf(time) {
+		lenis.raf(time);
+		requestAnimationFrame(raf);
+	}
+	requestAnimationFrame(raf);
+
+	const header = document.getElementById("header__content");
+	document.querySelectorAll('a[href^="#"]').forEach((link) => {
+		link.addEventListener("click", (e) => {
+			const hash = link.getAttribute("href");
+			if (!hash || hash === "#") return;
+			const target = document.querySelector(hash);
+			if (!target) return;
+			e.preventDefault();
+
+			const isCocktails = hash === "#cocktails";
+			const duration = isCocktails ? 2.5 : 1.0;
+
+			lenis.scrollTo(target, {
+				offset: -(header ? header.offsetHeight : 0),
+				duration,
+			});
+		});
+	});
 
 	const mainSplit = new SplitText(".title", { type: "chars" });
 	const parSplit = new SplitText(".par-title", { type: "lines" });
@@ -94,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	video.onloadedmetadata = () => {
 		const duration = video.duration || 10;
 		video.currentTime = 0.01;
-		if (IsMobile) {
+		if (IsMobile || IsSmallMobile) {
 			video.play().then(() => {
 				video.pause();
 				video.currentTime = 0;
@@ -284,7 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			rotateX: 0,
 			scrollTrigger: {
 				trigger: "#footer",
-				start: "top 10%",
+				start: "top 15%",
 				end: "bottom bottom",
 				scrub: 5,
 			},
