@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		duration: 1.5,
 		easing: (t) => 1 - Math.pow(1 - t, 3),
 		smoothWheel: true,
-		smoothTouch: true,
+		smoothTouch: false,
 	});
 
 	lenis.on("scroll", () => ScrollTrigger.update());
